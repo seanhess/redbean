@@ -2392,7 +2392,6 @@ class RedBean_Decorator {
 	 * Magic getter. Another way to handle accessors
 	 */
 	public function __get( $name ) {
-		$name = strtolower( $name );
 		return $this->data->$name;
 	}
 	
@@ -2400,7 +2399,6 @@ class RedBean_Decorator {
 	 * Magic setter. Another way to handle accessors
 	 */
 	public function __set( $name, $value ) {
-		$name = strtolower( $name );
 		$this->data->$name = $value;
 	}
 
@@ -2414,7 +2412,7 @@ class RedBean_Decorator {
 	 */
 	public function command( $method, $arguments ) {
 		if (strpos( $method,"set" ) === 0) {
-			$prop = substr( $method, 3 );
+			$prop = strtolower( substr( $method, 3 ) );
 			$this->$prop = $arguments[0];
 			return false;
 				
@@ -2462,7 +2460,7 @@ class RedBean_Decorator {
 			return $decos;
 		}
 		elseif (strpos( $method, "get" ) === 0) {
-			$prop = substr( $method, 3 );
+			$prop = strtolower( substr( $method, 3 ) );
 			return $this->$prop;
 		}
 		elseif (strpos( $method, "oget" ) === 0) {
