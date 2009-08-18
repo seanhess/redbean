@@ -122,7 +122,7 @@ class RedBean_Decorator extends RedBean_Observable implements IteratorAggregate 
 	 */
 	public function __get( $name ) {
 		$this->signal("deco_get", $this);
-		$name = strtolower( $name );
+        // $name = strtolower( $name );
 		return isset($this->data->$name) ? $this->data->$name : null;
 	}
 
@@ -131,7 +131,7 @@ class RedBean_Decorator extends RedBean_Observable implements IteratorAggregate 
 	 */
 	public function __set( $name, $value ) {
 		$this->signal("deco_set", $this);
-		$name = strtolower( $name );
+        // $name = strtolower( $name );
 		$this->data->$name = $value;
 	}
 
